@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <title>Create Class</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <style>
+    body    { padding-top:80px; word-wrap:break-word; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="page-header text-center">
+    <h1><span class="fa fa-edit"></span> Add Student to Class Page</h1>
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+  </div>
+  <div 
+  <label class="sr-only" for="selectClass">Select Class</label>
+  <input list="browsers">
+  <datalist id="browsers">
+
+  <option value="classlist">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist>
+  </div>
+<% for (var i=0; i<25; i++){ %>
+<form action="/addclassuser" method="post" class="form-inline" role="form">
+  <div class="form-group"> 
+    <span >Student</span> 
+    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+  </div>
+
+  <div class="form-group">
+     <label></label>
+    <label class="sr-only" for="exampleInputPassword2">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+  </div>
+  <div class="form-group">
+     <label></label>
+  <button type="submit" class="btn btn-lg btn-primary btn-block">Submit!</button>
+</div>
+</form>
+<%}%> 
+<label></label>
+
+</body>
+</html>
