@@ -7,6 +7,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var teacherSchema = mongoose.Schema({
 
     local            : {
+    	fullname	 : String,
         email        : String,
         password     : String,
     }

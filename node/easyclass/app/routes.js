@@ -1,5 +1,5 @@
 
-module.exports = function(app, passport) {
+module.exports = function(app, passport, tpassport) {
 
 // normal routes ===============================================================
 
@@ -176,12 +176,15 @@ module.exports = function(app, passport) {
 			res.render('teacherlogin.ejs', { message: req.flash('loginMessage') });
 		});
 
-			app.post('/teacherlogin', passport.authenticate('teacher-login', {
+		app.post('/teacherlogin', tpassport.authenticate('teacher-login', {
 			successRedirect : '/teacherprofile', // redirect to the secure profile section
 			failureRedirect : '/teacherlogin', // redirect back to the signup page if there is an error
 			failureFlash : true // allow flash messages
 		}));
 
+		app.get('/studentlist', function(req, res){
+			res.render('studentlist.ejs');
+		});
 
 		// STUDENTLOGIN
 		app.get('/studentlogin', function(req, res) {

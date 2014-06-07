@@ -23,17 +23,18 @@
 			<div class="well">
 				<h3><span class="fa fa-user"></span> Teacher</h3>
 
-				<% if (teacher.local.email) { %>
+				<% if (user.local.email) { %>
 					<p>
-						res.send(collection.getCollectionNames());
-						<strong>id</strong>: <%= teacher._id %><br>
-						<strong>email</strong>: <%= teacher.local.email %><br>
-						<strong>password</strong>: <%= teacher.local.password %>
+						
+						<strong>id</strong>: <%= user._id %><br>
+						<strong>email</strong>: <%= user.local.email %><br>
+						<strong>password</strong>: <%= user.local.password %>
 					</p>
 					<div class="text-right">
-						<a href="/createclass" class="btn btn-lg btn-primary btn-block">Create Class</a>
-						<a href="/manageclass" class="btn btn-lg btn-info btn-block">Manage Class</a>
-						<a href="/signupuser" class="btn btn-lg btn-primary btn-block">Sign up User</a>
+						<a href="/studentlist" class="btn btn-lg btn-primary btn-block">View Student List</a>
+						<a href="/checkattend" class="btn btn-lg btn-info btn-block">Check Attendance</a>
+						<a href="/teacherchat" class="btn btn-lg btn-primary btn-block">Chat with student</a>
+						
 					</div>
 				<% } else { %>
 					<a href="/connect/local" class="btn btn-default">Connect Local</a>
