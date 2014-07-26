@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Node Authentication</title>
+	<title>Create Class</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	<style>
@@ -12,37 +12,34 @@
 <div class="container">
 
 	<div class="page-header text-center">
-		<h1><span class="fa fa-credit-card"></span> Administrator Profile Page</h1>
+		<h1><span class="fa fa-edit"></span> Create Class Page</h1>
 		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
 	</div>
-
-	<div class="row">
-
-		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-6">
-			<div class="well">
-				<h3><span class="fa fa-user"></span> Administrator</h3>
-
-				<% if (user.local.email) { %>
+	<form action="/createclass" method="post">
+  <div class="form-group">
+  	<label>Class Name</label>
+    <label class="sr-only" for="exampleInputEmail2">Enter class name here</label>
+    <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Enter class name here must be class behind(e.g. mathclass)" name="classname">
+  </div>
+     <button type="submit" class="btn btn-lg btn-primary btn-block">Create class</button>
+   </form>
+   <form action="/createclass" method="post">
+   	<% if (user.local.email) { %>
 					<p>
 						
-						<strong>id</strong>: <%= user._id %><br>
+						<strong>id</strong>: <%= db.getCollectionNames() %><br>
 						<strong>email</strong>: <%= user.local.email %><br>
 						<strong>password</strong>: <%= user.local.password %>
 					</p>
 					<div class="text-right">
 						<a href="/createclass" class="btn btn-lg btn-primary btn-block">Create Class</a>
 						<a href="/manageclass" class="btn btn-lg btn-info btn-block">Manage Class</a>
-						<a href="/managestudent" class="btn btnlg btn-primary btn-block">Manage Student</a>
-						<a href="/signupuser" class="btn btn-lg btn-info btn-block">Sign up User</a>
+						<a href="/signupuser" class="btn btn-lg btn-primary btn-block">Sign up User</a>
 					</div>
 				<% } else { %>
 					<a href="/connect/local" class="btn btn-default">Connect Local</a>
 				<% } %>
-
-			</div>
-		</div>
-				
+   	</form>
 </div>
 </body>
 </html>

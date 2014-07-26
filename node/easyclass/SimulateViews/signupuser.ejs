@@ -16,13 +16,9 @@
     <a href="/logout" class="btn btn-default btn-sm">Logout</a>
   </div>
 
-<div class = "col-sm-6 col-sm-offset-3">
+<div class = "col-xs-6">
   <!-- TEACHER SIGNUP FORM -->
   <form action="/signupteacher" method="post">
-    <div class="form-group">
-      <label>Name</label>
-      <input type="text" class="form-control" name="name">
-    </div>
     <div class="form-group">
       <label>Email</label>
       <input type="text" class="form-control" name="email">
@@ -31,15 +27,27 @@
       <label>Password</label>
       <input type="password" class="form-control" name="password">
     </div>
-    
-  <div>Register as <select>
-           <option value="teacher">Teacher</option>
-           <option value="student" selected>Student</option>
-          </select></div><label></label>
-    <button type="submit" class="btn btn-lg btn-primary btn-block">Signup</button>      
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Signup</button>
+  <div><label>Teacher sign up</label></div>
+  </form>
+</div>
+<div class = "col-xs-6">
+  <!-- STUDENT SIGNUP FORM -->
+  <form action="/signupstudent" method="post">
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" name="email">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" name="password">
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary btn-block">Signup</button>
+  <div><label>Student sign up</label></div>
   </form>
 </div>
 
+<label></label>
 
 </body>
 </html>

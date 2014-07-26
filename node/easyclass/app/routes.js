@@ -38,7 +38,6 @@ module.exports = function(app, passport, tpassport) {
 	
 	// PULL COLLECTION LIST IN DATABASE
 
-
 	// CREATE CLASS FOR USER
 	app.post('/createclass', function(req, res){
 		var className = req.body.classname;
@@ -60,10 +59,13 @@ module.exports = function(app, passport, tpassport) {
         console.dir(results);
         // Let's close the db
         db.close();
-        res.redirect('/createclass');
+        res.redirect('/adduserclass');
     		});
 		});
+	});
 
+app.get('/adduserclass', function(req, res) {
+		res.render('adduserclass.ejs', { user: req.user});		
 	});
 
 // SIGNUP FOR USER ==============================
@@ -106,41 +108,41 @@ module.exports = function(app, passport, tpassport) {
 			failureFlash : true // allow flash messages
 		}));
 
+app.get('/signupstudent', function(req, res) {
+		res.render('signupstudent.ejs', { user: req.user});		
+	});
+
 	app.post('/signupstudent', function(req, res){
-		var studentEmail = req.body.studentemail;
-		var studentPass = req.body.studentpass;
+		var sname = req.body.name;
+		var semail = req.body.email;
+		var spass = req.body.password;
 		var MongoClient = require('mongodb').MongoClient
     	, format = require('util').format;
 
 		MongoClient.connect('mongodb://127.0.0.1:27017/easyclass', function(err, db) {
     	if(err) throw err;
-    	
-    	var collection = db.collection("students");
-    	collection.insert({
-        "email" : studentEmail,
-        "password" : studentPass
-    }, function (err, doc) {
-        if (err) {
-            // If it failed, return error
-            res.send("There was a problem adding the information to the database.");
-        }
-        else {
-         //collection.insert({ "email" : teacherEmail, "password" : teacherPass })
-        // res.send("complete");
-     
-        res.redirect('/signupuser');
-        }
-    
-    });
-    });	
-	});
 
+    	var collection = db.collection('students');
+    	collection.insert({name:sname, email: semail, password: spass}, function(err, docs) {
+       		 collection.count(function(err, count) {
+            	console.log(format("count = %s", count));
+        });
+    });
+
+    // Locate all the entries using find
+    collection.find().toArray(function(err, results) {
+        console.dir(results);
+        // Let's close the db
+        db.close();
+        res.redirect('/adduserclass');
+    		});
+		});
+	});
 
 	//MANAGE CLASSES
 	app.get('/manageclass', isLoggedIn, function(req, res){
 		res.render('manageclass.ejs', { user: req.user});
 	});
-
 
 	app.post('/manageclass', function(req, res){
 		var Items = db.getCollection('users');
@@ -152,6 +154,7 @@ module.exports = function(app, passport, tpassport) {
 		res.send(Items.find());
 
 	});
+
 	//app.get('showsuccess', isSuccess)
 // =============================================================================
 // AUTHENTICATE (FIRST LOGIN) ==================================================
@@ -163,14 +166,12 @@ module.exports = function(app, passport, tpassport) {
 		app.get('/administratorlogin', function(req, res) {
 			res.render('adminlogin.ejs', { message: req.flash('loginMessage') });
 		});
-
 		// process the login form
 		app.post('/administratorlogin', passport.authenticate('local-login', {
 			successRedirect : '/administratorprofile', // redirect to the secure profile section
 			failureRedirect : '/administratorlogin', // redirect back to the signup page if there is an error
 			failureFlash : true // allow flash messages
 		}));
-
 		// TEACHER LOGIN ===============================
 		app.get('/teacherlogin', function(req, res) {
 			res.render('teacherlogin.ejs', { message: req.flash('loginMessage') });
@@ -210,7 +211,6 @@ module.exports = function(app, passport, tpassport) {
 			failureFlash : true // allow flash messages
 		}));
 
-
 	// facebook -------------------------------
 
 		// send to facebook to do the authentication
@@ -224,7 +224,6 @@ module.exports = function(app, passport, tpassport) {
 			}));
 
 	// twitter --------------------------------
-
 		// send to twitter to do the authentication
 		app.get('/auth/twitter', passport.authenticate('twitter', { scope : 'email' }));
 
@@ -234,7 +233,6 @@ module.exports = function(app, passport, tpassport) {
 				successRedirect : '/profile',
 				failureRedirect : '/'
 			}));
-
 
 	// google ---------------------------------
 
@@ -285,7 +283,6 @@ module.exports = function(app, passport, tpassport) {
 				successRedirect : '/profile',
 				failureRedirect : '/'
 			}));
-
 
 	// google ---------------------------------
 
@@ -343,7 +340,6 @@ module.exports = function(app, passport, tpassport) {
 		});
 	});
 
-
 };
 
 function createClass(req, res, next){
@@ -364,5 +360,3 @@ function isLoggedIn(req, res, next) {
 
 	res.redirect('/');
 }
-
-

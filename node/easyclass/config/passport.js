@@ -11,7 +11,6 @@ var Student      = require('../app/models/student');
 // load the auth variables
 var configAuth = require('./auth'); // use this one for testing
 
-
 module.exports = function(passport, tpassport) {
 
     // =========================================================================
@@ -31,7 +30,6 @@ module.exports = function(passport, tpassport) {
             done(err, user);
         });
     });    
-
 
     tpassport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -76,7 +74,6 @@ module.exports = function(passport, tpassport) {
                     return done(null, user);
             });
         });
-
     }));
 
  // =========================================================================
@@ -112,11 +109,7 @@ module.exports = function(passport, tpassport) {
                     return done(null, user);
             });
         });
-
     }));
-
-
-
 
     // =========================================================================
     // LOCAL SIGNUP FOR ADMINISTRATOR===========================================
@@ -130,7 +123,6 @@ module.exports = function(passport, tpassport) {
     function(req, email, password, done) {
         if (email)
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
-
         // asynchronous
         process.nextTick(function() {
             // if the user is not already logged in:
@@ -158,7 +150,6 @@ module.exports = function(passport, tpassport) {
                             return done(null, newUser);
                         });
                     }
-
                 });
             // if the user is logged in but has no local account...
             } else if ( !req.user.local.email ) {
@@ -175,11 +166,8 @@ module.exports = function(passport, tpassport) {
                 // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)
                 return done(null, req.user);
             }
-
         });
-
     }));
-
 
     // =========================================================================
     // LOCAL SIGNUP FOR TEACHER=================================================
@@ -240,11 +228,8 @@ module.exports = function(passport, tpassport) {
                 // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)
                 return done(null, req.user);
             }
-
         });
-
     }));
-
 
     // =========================================================================
     // LOCAL SIGNUP FOR STUDENT=================================================
@@ -286,7 +271,6 @@ module.exports = function(passport, tpassport) {
                             return done(null, newUser);
                         });
                     }
-
                 });
             // if the user is logged in but has no local account...
             } else if ( !req.user.local.email ) {
@@ -303,11 +287,6 @@ module.exports = function(passport, tpassport) {
                 // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)
                 return done(null, req.user);
             }
-
         });
-
     }));
-
-
 };
-

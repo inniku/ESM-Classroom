@@ -12,7 +12,7 @@
 <div class="container">
 
 	<div class="page-header text-center">
-		<h1><span class="fa fa-credit-card"></span> Administrator Profile Page</h1>
+		<h1><span class="fa fa-credit-card"></span> Teacher Profile Page</h1>
 		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
 	</div>
 
@@ -21,7 +21,7 @@
 		<!-- LOCAL INFORMATION -->
 		<div class="col-sm-6">
 			<div class="well">
-				<h3><span class="fa fa-user"></span> Administrator</h3>
+				<h3><span class="fa fa-user"></span> Teacher</h3>
 
 				<% if (user.local.email) { %>
 					<p>
@@ -31,10 +31,10 @@
 						<strong>password</strong>: <%= user.local.password %>
 					</p>
 					<div class="text-right">
-						<a href="/createclass" class="btn btn-lg btn-primary btn-block">Create Class</a>
-						<a href="/manageclass" class="btn btn-lg btn-info btn-block">Manage Class</a>
-						<a href="/managestudent" class="btn btnlg btn-primary btn-block">Manage Student</a>
-						<a href="/signupuser" class="btn btn-lg btn-info btn-block">Sign up User</a>
+						<a href="/studentlist" class="btn btn-lg btn-primary btn-block">View Student List</a>
+						<a href="/checkattend" class="btn btn-lg btn-info btn-block">Check Attendance</a>
+						<a href="/teacherchat" class="btn btn-lg btn-primary btn-block">Chat with student</a>
+						
 					</div>
 				<% } else { %>
 					<a href="/connect/local" class="btn btn-default">Connect Local</a>
@@ -42,7 +42,8 @@
 
 			</div>
 		</div>
-				
+
+
 </div>
 </body>
 </html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+	<title>Manage Class</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-edit"></span> Student List Page</h1>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+	<div>
+		Student List
+	</div>
+	   <div>
+          Jonh Doe <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+
+      <div>
+          Victor Braden <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+
+      <div>
+          Yoshida Yamato <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+	
+		<div>
+          Alex Mahoun <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+
+      <div>
+          Yohan Smith <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+
+      <div>
+          Nell Tomson <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+
+      <div>
+          Rosey Kim <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+
+      <div>
+          Owen Jackson <button type="button" class="btn btn-success">Presence</button> 
+          			<button type="button" class="btn btn-danger">Absence</button>
+           			<button type="button" class="btn btn-warning">Leave</button>
+      </div>
+</div>
+<div class = "col-sm-offset-1 col-sm-2">
+<form action="/manageclass" method="post">
+    <div class="form-group">
+   
+  </form>
+</div>
+</body>
+<template name= "list_classes">
+		<ol>
+			{{#each all_items}}
+			<li>{{item}} </li>
+			{{/each}}
+		</ol>
+	</template>
+</html>
